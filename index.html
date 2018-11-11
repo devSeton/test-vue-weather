@@ -8,6 +8,7 @@
 
   <link rel='stylesheet' href='css/style.min.css'>
 </head>
+
 <body>
   <div id='weather' class='weather'>
 
@@ -26,9 +27,18 @@
         <div class='weather__current-city'>
           <p>{{currentCity}}</p>
         </div>
-        <temperature-type
+        <!-- <temperature-type
           class='temperature-type'
+          ></temperature-type> -->
+        <div class="temperature-type">
+          <temperature-type
+            class='temperature-type__btn'
+            v-for='type in temperatureType'
+            v-bind:title='type.title'
+            v-bind:class='[{"temperature-type__btn--active":isActive == type.id}, type.class]'
+            v-on:convert='getConvertTemperature(type.id)'
           ></temperature-type>
+        </div>
       </div>
       <div class='user-location'>
         <p class='user-location__change-city' @click="showInput">Сменить город</p>
@@ -50,7 +60,6 @@
         v-for='char in charWeather'
         v-bind:state='char.state'>
       </deegres-state>
-
     </div>
 
     <div class='weather__parameters-wrap'>

@@ -3,15 +3,19 @@ Vue.component('weather-parameter', {
   template: '<div>'+
                '<p class="weather-parameter__title">{{ title }}</p>'+
                '<p class="weather-parameter__value">{{ value }}</p></div>'
-})
+});
 
 Vue.component('temperature-type', {
-  template:
-    '<div>'+
-      '<p class="temperature-type__btn temperature-type__celsius">C</p>'+
-      '<p class="temperature-type__btn temperature-type__fahrenheit">F</p>'+
-    '</div>'
+  props: ['id', 'title'],
+  template: '<p v-on:click="$emit(\'convert\')">{{ title }}</p>'
 });
+// Vue.component('temperature-type', {
+//   template:
+//     '<div>'+
+//       '<p class="temperature-type__btn temperature-type__celsius">C</p>'+
+//       '<p class="temperature-type__btn temperature-type__fahrenheit">F</p>'+
+//     '</div>'
+// });
 
 Vue.component('flex-input',{
   props:['currentCity'],
@@ -23,18 +27,6 @@ Vue.component('flex-input',{
 Vue.component('flex-btn',{
   template: `<button v-on:click="$emit('show')">ok</button>`
 });
-
-// Vue.component('city-input',{
-//   props:['showInput', 'currentCity'],
-//   template: '<div>'+
-//               '<input '+
-//                 'class="input weather__input" '+
-//                 'v-model="currentCity" >'+
-//               '<button '+
-//                 'class="btn weather__btn" '+
-//               '>ок</button>'+
-//             '</div>',
-// });
 
 Vue.component('deegres-state', {
   props: ['state'],
@@ -48,23 +40,18 @@ Vue.component('deegres-title' ,{
     '<div><p class="deegres-information__title">{{ deegres }}</p></div>'
 });
 
-// Vue.component('deegres-img', {
-//   props:['src'],
-//   template: '<img height="150" src="{{src}}"/>'
-// });
-
-
 const weather = new Vue({
   el: '#weather',
   data: {
     currentCity: 'Краснодар',
     show: false,
+    isActive: 1,
     charWeather:[
       { deegres: '14', state: 'Дождь', src: 'img/rain.png' }
     ],
     temperatureType: [
-      {title: 'C', class: 'temperature-type__celsius'},
-      {title: 'F', class: 'temperature-type__fahrenheit'}
+      {id: '1', title: 'C', class: 'temperature-type__celsius'},
+      {id: '2', title: 'F', class: 'temperature-type__fahrenheit'}
     ],
     parametersWeather: [
       { title: 'Ветер', value: '5 м/с, западный' },
@@ -76,6 +63,9 @@ const weather = new Vue({
   methods: {
     showInput: function(){
       this.show = !this.show;
+    },
+    getConvertTemperature: function(el){
+      this.isActive = el;
     }
   }
 })
