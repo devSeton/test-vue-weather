@@ -131,6 +131,11 @@ body{
     padding-right: 10px;
     width: 16px;
   }
+
+  &__change-city,
+  &__my-location{
+    cursor: pointer;
+  }
 }
 
 .location-wrap{
@@ -174,6 +179,7 @@ body{
 
   &__btn{
     display: inline-block;
+    cursor: pointer;
     padding: 5px 10px;
     opacity: .5;
   }
