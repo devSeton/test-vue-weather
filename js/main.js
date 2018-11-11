@@ -66,6 +66,7 @@ const weather = new Vue({
     },
     getConvertTemperature: function(el){
       this.isActive = el;
+      // Vue.set(this.charWeather, 0, '20');
     }
   }
 })

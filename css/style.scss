@@ -14,7 +14,7 @@ $laptop-width: 768px;
 $laptop-font-size: 1.125rem;
 $laptop-line-height: 1.125rem;
 
-@import 'reset'; 
+@import 'reset';
 
 body{
   background-color: #498cec;
@@ -151,7 +151,7 @@ body{
   }
 
   &__title{
-    font-size: .9375rem;
+    font-size: .875rem;
     opacity: .7;
     padding-bottom: 5px;
 
