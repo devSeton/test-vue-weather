@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Weather</title>
+
+  <link rel='stylesheet' href='css/style.min.css'>
+</head>
+<body>
+  <div id='weather' class='weather'>
+
+    <div class='location-wrap'>
+      <div class="weather__input-wrap" v-show="show">
+        <flex-input
+          class='input weather__input'
+          v-model='currentCity'
+        ></flex-input>
+        <flex-btn
+          class='btn weather__btn'
+          v-on:show="showInput"
+        ></flex-btn>
+      </div>
+      <div class='weather__location'>
+        <div class='weather__current-city'>
+          <p>{{currentCity}}</p>
+        </div>
+        <temperature-type
+          class='temperature-type'
+          ></temperature-type>
+      </div>
+      <div class='user-location'>
+        <p class='user-location__change-city' @click="showInput">Сменить город</p>
+        <p class='user-location__my-location'>Моё местоположение</p>
+      </div>
+    </div>
+
+    <div class='weather__information-wrap'>
+      <div class='deegres-information'>
+        <img class="deegres-information__img" height="150" src="css/img/rain.png"/>
+        <deegres-title
+          class='deegres-information__container deegres-information__title-container'
+          v-for='char in charWeather'
+          v-bind:deegres='char.deegres'>
+        </deegres-title>
+      </div>
+      <deegres-state
+        class='deegres-state'
+        v-for='char in charWeather'
+        v-bind:state='char.state'>
+      </deegres-state>
+
+    </div>
+
+    <div class='weather__parameters-wrap'>
+      <weather-parameter
+        class='weather-parameter'
+        v-for='parameter in parametersWeather'
+        v-bind:title='parameter.title'
+        v-bind:value='parameter.value'>
+      </weather-parameter>
+    </div>
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script src='js/main.js'></script>
+</body>
+</html>
