@@ -1,3 +1,4 @@
+// параметры погоды
 Vue.component('weather-parameter', {
   props: ['title', 'value'],
   template: '<div>'+
@@ -5,18 +6,13 @@ Vue.component('weather-parameter', {
                '<p class="weather-parameter__value">{{ value }}</p></div>'
 });
 
+// переключатель единиц измерения температуры
 Vue.component('temperature-type', {
   props: ['id', 'title'],
   template: '<p v-on:click="$emit(\'convert\')">{{ title }}</p>'
 });
-// Vue.component('temperature-type', {
-//   template:
-//     '<div>'+
-//       '<p class="temperature-type__btn temperature-type__celsius">C</p>'+
-//       '<p class="temperature-type__btn temperature-type__fahrenheit">F</p>'+
-//     '</div>'
-// });
 
+// инпут и кнопка для изменения города
 Vue.component('flex-input',{
   props:['currentCity'],
   template: `<input
@@ -28,12 +24,14 @@ Vue.component('flex-btn',{
   template: `<button v-on:click="$emit('show')">ok</button>`
 });
 
-Vue.component('deegres-state', {
+// состояние погоды (дождь / град и т.п.)
+Vue.component('weather-state', {
   props: ['state'],
   template:
-    '<div><p class="deegres-state__title">{{ state }}</p></div>'
+    '<div><p class="weather-state__title">{{ state }}</p></div>'
 });
 
+// градусы
 Vue.component('deegres-title' ,{
   props: ['deegres'],
   template:
@@ -66,7 +64,6 @@ const weather = new Vue({
     },
     getConvertTemperature: function(el){
       this.isActive = el;
-      // Vue.set(this.charWeather, 0, '20');
     }
   }
 })
