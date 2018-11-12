@@ -45,7 +45,7 @@ const weather = new Vue({
     show: false,
     isActive: 1,
     charWeather:[
-      { deegres: '14', state: 'Дождь', src: 'img/rain.png' }
+      { deegres: '14', state: 'Дождь', src: 'rain.png' }
     ],
     temperatureType: [
       {id: '1', title: 'C', class: 'temperature-type__celsius'},

@@ -47,11 +47,16 @@
     </div>
 
     <div class='weather__information-wrap'>
-      <div class='deegres-information'>
-        <img class="deegres-information__img" height="150" src="css/img/rain.png"/>
+      <div
+        class='deegres-information'
+        v-for='char in charWeather'>
+        <img
+          class='deegres-information__img'
+          v-bind:src="'./css/img/' + char.src"
+          height="150"
+        ></img>
         <deegres-title
           class='deegres-information__container deegres-information__title-container'
-          v-for='char in charWeather'
           v-bind:deegres='char.deegres'>
         </deegres-title>
       </div>
